@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y3XgL9OqGnpunIjWqnk2kKz+FjHSz2kMDt/R6ruIgs4pNBF/5WF3EYloznP9/I3wJwOH44y8OyJ2ijW7RcI1gA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dominic\\Projects\\Personal\\MMR-Cacher\\src\\Cacher\\Cacher.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dominic\\.nuget\\packages\\amazon.lambda.apigatewayevents\\1.2.0\\amazon.lambda.apigatewayevents.1.2.0.nupkg.sha512",
+    "C:\\Users\\Dominic\\.nuget\\packages\\amazon.lambda.core\\1.1.0\\amazon.lambda.core.1.1.0.nupkg.sha512",
+    "C:\\Users\\Dominic\\.nuget\\packages\\amazon.lambda.serialization.json\\1.5.0\\amazon.lambda.serialization.json.1.5.0.nupkg.sha512",
+    "C:\\Users\\Dominic\\.nuget\\packages\\awssdk.core\\3.5.0-beta\\awssdk.core.3.5.0-beta.nupkg.sha512",
+    "C:\\Users\\Dominic\\.nuget\\packages\\awssdk.dynamodbv2\\3.5.0-beta\\awssdk.dynamodbv2.3.5.0-beta.nupkg.sha512",
+    "C:\\Users\\Dominic\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

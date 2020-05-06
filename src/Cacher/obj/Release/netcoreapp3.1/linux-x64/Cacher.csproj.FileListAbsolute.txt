@@ -1,0 +1,15 @@
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\bin\Release\netcoreapp3.1\linux-x64\Cacher.deps.json
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\bin\Release\netcoreapp3.1\linux-x64\Cacher.runtimeconfig.json
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\bin\Release\netcoreapp3.1\linux-x64\Cacher.runtimeconfig.dev.json
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\bin\Release\netcoreapp3.1\linux-x64\Cacher.dll
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\bin\Release\netcoreapp3.1\linux-x64\Cacher.pdb
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\bin\Release\netcoreapp3.1\linux-x64\RiotSharp.dll
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\bin\Release\netcoreapp3.1\linux-x64\RiotSharp.pdb
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.csprojAssemblyReference.cache
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.csproj.CoreCompileInputs.cache
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.AssemblyInfoInputs.cache
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.AssemblyInfo.cs
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.csproj.CopyComplete
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.dll
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.pdb
+C:\Users\Dominic\Projects\Personal\MMR-Cacher\src\Cacher\obj\Release\netcoreapp3.1\linux-x64\Cacher.genruntimeconfig.cache

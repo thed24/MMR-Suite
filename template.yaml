@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Serverless Cacher system used for MMR tool
+
+Globals:
+  Function:
+    Timeout: 15
+
+Resources:
+  CacherFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Policies:
+      - AWSLambdaExecute
+      - Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - dynamodb:DescribeTable
+              - dynamodb:PutItem
+              - dynamodb:DeleteItem
+              - dynamodb:UpdateItem
+              - dynamodb:UpdateTable
+              - dynamodb:GetItem
+              - dynamodb:BatchGetItem
+            Resource: "*"
+      CodeUri: ./src/Cacher/
+      Handler: Cacher::Cacher.Function::Main
+      Runtime: dotnetcore3.1
+      Environment:
+        Variables:
+          SUMMONER: ${SUMMONER}
+          API: ${API}
+  CacheTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: "SummonerLpHistory"
+      AttributeDefinitions:
+        - AttributeName: "SummonerName"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "SummonerName"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+Outputs:
+  CacherFunction:
+    Description: "Cacher Lambda Function ARN"
+    Value: !GetAtt CacherFunction.Arn
+  CacherFunctionIamRole:
+    Description: "Implicit IAM Role created for Cacher function"
+    Value: !GetAtt CacherFunctionRole.Arn

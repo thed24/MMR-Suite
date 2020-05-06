@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cacher", "src\Cacher\Cacher.csproj", "{220BF9AD-7CBA-4D6E-9DE0-95BABCF190E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06C1A07F-480E-4741-A320-B9A733E81FFB}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+	omnisharp.json = omnisharp.json
+	README.md = README.md
+	template.yaml = template.yaml
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{220BF9AD-7CBA-4D6E-9DE0-95BABCF190E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{220BF9AD-7CBA-4D6E-9DE0-95BABCF190E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{220BF9AD-7CBA-4D6E-9DE0-95BABCF190E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{220BF9AD-7CBA-4D6E-9DE0-95BABCF190E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E97BAC3E-8B87-41C7-8125-42E04E36F18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97BAC3E-8B87-41C7-8125-42E04E36F18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97BAC3E-8B87-41C7-8125-42E04E36F18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97BAC3E-8B87-41C7-8125-42E04E36F18B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
