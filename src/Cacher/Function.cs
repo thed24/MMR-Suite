@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.Serialization.Json;
 using Cacher.Service;
@@ -16,7 +15,7 @@ namespace Cacher
         private static readonly DatabaseService DatabaseService = new DatabaseService();
         private static readonly SummonerController Controller = new SummonerController(Connector, DatabaseService);
 
-        public static void Main(Stream stream)
+        public static void Main()
         {
             var summoner = Environment.GetEnvironmentVariable("SUMMONER");
             Controller.ParseInput(summoner);

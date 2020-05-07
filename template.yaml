@@ -5,7 +5,7 @@ Description: >
 
 Globals:
   Function:
-    Timeout: 15
+    Timeout: 900
 
 Resources:
   CacherFunction:
@@ -27,6 +27,8 @@ Resources:
             Resource: "*"
       CodeUri: ./src/Cacher/
       Handler: Cacher::Cacher.Function::Main
+      Events:
+        - schedule: rate(15 minutes)
       Runtime: dotnetcore3.1
       Environment:
         Variables:
