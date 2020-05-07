@@ -17,7 +17,7 @@ namespace Cacher.Service
         public void ParseInput(string input)
         {
             var entries = _connector.GetSummonersInSummonerLeague(input);
-            
+
             //
             foreach (var entry in entries)
                 try

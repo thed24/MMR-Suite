@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using Amazon.DynamoDBv2.DocumentModel;
 using Cacher.Database;
 using Cacher.Model;
@@ -12,13 +11,14 @@ namespace Cacher.Service
 
         private SummonerStats DocumentUnwrapper(Document document)
         {
-            var name = document["SummonerName"].AsPrimitive();
-            var time = document["Time"].AsPrimitive();
-            var rank = document["Rank"].AsPrimitive();
-            var lp = document["LP"].AsPrimitiveList();
-            var tier = document["Tier"].AsPrimitive();
+            var name = document["SummonerName"].AsPrimitive().AsString();
+            var rank = document["Rank"].AsPrimitive().AsString();
+            var lp = document["LP"].AsPrimitiveList().AsListOfString();
+            var tier = document["Tier"].AsPrimitive().AsString();
+            var time = document["Time"].AsPrimitive().AsString();
+            var timeAsDateTime = DateTime.Parse(time);
 
-            return new SummonerStats(rank, lp, name, tier, time);
+            return new SummonerStats(rank, lp, name, tier, timeAsDateTime);
         }
 
         private Document DocumentWrapper(string summonerName)
@@ -31,7 +31,7 @@ namespace Cacher.Service
         private Document DocumentWrapper(SummonerStats summonerStats)
         {
             var document = DocumentWrapper(summonerStats.Name);
-            document["Time"] = summonerStats.Time.ToString(CultureInfo.InvariantCulture);
+            document["Time"] = summonerStats.Time;
             document["Rank"] = summonerStats.Rank;
             document["LP"] = summonerStats.LpLog;
             document["Tier"] = summonerStats.Tier;
@@ -56,10 +56,10 @@ namespace Cacher.Service
             }
         }
 
-        internal SummonerStats Get(string summonerName)
+        private SummonerStats Get(string summonerName)
         {
             var summonerFromDb = _repository.Get(summonerName);
-            return summonerFromDb is null ? null : DocumentUnwrapper(_repository.Get(summonerFromDb));
+            return summonerFromDb is null ? null : DocumentUnwrapper(summonerFromDb);
         }
     }
 }

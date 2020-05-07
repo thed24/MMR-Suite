@@ -3,3 +3,5 @@
 events
 libs
 omnisharp.json
+obj
+bin

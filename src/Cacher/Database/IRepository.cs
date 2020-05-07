@@ -1,12 +1,10 @@
-using Amazon.DynamoDBv2.DocumentModel;
-
 namespace Cacher.Database
 {
     internal interface IRepository<I, O>
     {
-        O Get(string summonerId);
+        I Get(O summonerId);
 
-        void Delete(I summonerId);
+        void Delete(O summonerId);
 
         void Update(I summonerId);
 
