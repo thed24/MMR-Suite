@@ -33,32 +33,30 @@ namespace Cacher.Service
             };
             return document;
         }
-        
+
+        internal void Add(SummonerStats summonerStats)
+        {
+            var summoner = Get(summonerStats.Name);
+            if (summoner != null)
+            {
+                Update(summonerStats.LpLog.Last(), summoner);
+            }
+            else
+            {
+                _repository.Add(DocumentWrapper(summonerStats));
+            }
+        }
         private SummonerStats Get(string summonerName)
         {
             var summonerFromDb = _repository.Get(summonerName);
             return summonerFromDb is null ? null : DocumentUnwrapper(summonerFromDb);
         }
         
-        internal void Add(SummonerStats summonerStats)
+        private void Update(string newLp, SummonerStats summoner)
         {
-            var summoner = Get(summonerStats.Name);
-            Document summonerToAdd;
-            if (summoner != null)
-            {
-                Console.Write(summonerStats.Name + " exists, updating.");
-                var newLp = summonerStats.LpLog[0];
-                if (!summoner.LpLog.Last().Equals(newLp)) return;
-                summoner.LpLog.Add(newLp);
-                summonerToAdd = DocumentWrapper(summoner);
-                _repository.Update(summonerToAdd);
-            }
-            else
-            {
-                Console.Write(summonerStats.Name + " does not exist, adding.");
-                summonerToAdd = DocumentWrapper(summonerStats);
-                _repository.Add(summonerToAdd);
-            }
+            if (summoner.LpLog.Last().Equals(newLp)) return;
+            summoner.LpLog.Add(newLp);
+            _repository.Update(DocumentWrapper(summoner));
         }
     }
 }

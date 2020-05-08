@@ -11,7 +11,7 @@ namespace Cacher
     public class Function
     {
         private static readonly string ApiKey = Environment.GetEnvironmentVariable("API");
-        private static readonly RiotService Connector = new RiotService(RiotApi.GetDevelopmentInstance(ApiKey, 15, 90));
+        private static readonly RiotService Connector = new RiotService(RiotApi.GetDevelopmentInstance(ApiKey, 19, 99));
         private static readonly DatabaseService DatabaseService = new DatabaseService();
         private static readonly SummonerController Controller = new SummonerController(Connector, DatabaseService);
 

@@ -13,7 +13,7 @@ namespace Cacher.Database
         public DynamoDbRepository()
         {
             var client = new AmazonDynamoDBClient(Region);
-            _table = Table.LoadTable(client, _tableName);
+            _table = Table.LoadTable(client, _tableName, DynamoDBEntryConversion.V2);
         }
 
         public Document Get(Primitive summoner)
