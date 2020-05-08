@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
@@ -20,25 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="obj\**" />
-    <Compile Include="obj\Release\netcoreapp3.1\linux-x64\Cacher.AssemblyInfo.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Remove="obj\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="obj\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="obj\Cacher.csproj.nuget.cache" />
-    <Content Include="obj\Cacher.csproj.nuget.dgspec.json" />
-    <Content Include="obj\Cacher.csproj.nuget.g.props" />
-    <Content Include="obj\Cacher.csproj.nuget.g.targets" />
-    <Content Include="obj\project.assets.json" />
-    <Content Include="obj\project.nuget.cache" />
-    <Content Include="obj\project.packagespec.json" />
   </ItemGroup>
 </Project>

@@ -21,9 +21,8 @@ namespace Cacher.Service
             foreach (var entry in entries)
                 try
                 {
-                    var summonersStats = _connector.GetSummonerStats(entry.SummonerId, entry.SummonerName);
+                    var summonersStats = _connector.CreateSummonerStats(entry.SummonerId, entry.SummonerName);
                     _database.Add(summonersStats);
-                    Thread.Sleep(3000);
                 }
                 catch (Exception e)
                 {

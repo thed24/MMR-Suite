@@ -28,7 +28,13 @@ Resources:
       CodeUri: ./src/Cacher/
       Handler: Cacher::Cacher.Function::Main
       Events:
-        - schedule: rate(15 minutes)
+        CacheSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: rate(15 minutes)
+            Name: CacheSchedule
+            Description: cache schedule
+            Enabled: True
       Runtime: dotnetcore3.1
       Environment:
         Variables:
