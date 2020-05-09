@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Cacher.Model
+﻿namespace Cacher.Model
 {
+    using System;
+    using System.Collections.Generic;
+
     public class SummonerStats
     {
         public SummonerStats(string rank, List<string> lp, string name, string tier, DateTime time)

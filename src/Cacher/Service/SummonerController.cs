@@ -1,8 +1,7 @@
-using System;
-using System.Threading;
-
 namespace Cacher.Service
 {
+    using System;
+
     internal class SummonerController
     {
         private readonly RiotService _connector;
@@ -17,7 +16,7 @@ namespace Cacher.Service
         public void ParseInput(string input)
         {
             var entries = _connector.GetSummonersInSummonerLeague(input);
-            
+
             foreach (var entry in entries)
                 try
                 {

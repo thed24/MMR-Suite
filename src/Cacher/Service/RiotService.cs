@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Cacher.Model;
-using RiotSharp;
-using RiotSharp.Endpoints.LeagueEndpoint;
-using RiotSharp.Misc;
-
-namespace Cacher.Service
+﻿namespace Cacher.Service
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Cacher.Model;
+    using RiotSharp;
+    using RiotSharp.Endpoints.LeagueEndpoint;
+    using RiotSharp.Misc;
+
     internal class RiotService
     {
         private readonly RiotApi _api;
