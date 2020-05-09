@@ -1,7 +1,6 @@
 ﻿namespace Calculator.Service
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using Cacher.Model;
@@ -17,15 +16,15 @@
             double serverGain = 0;
             double serverLoss = 0;
             var filteredSummoners = summoners.Where(x => x.LpLog.Count > 1);
-            
+
             foreach (var summoner in filteredSummoners)
             {
                 var summonerAverage = CalculateIncrements(summoners, summoner.Name);
-                
+
                 var lpGains = summonerAverage.Where(x => x.IsLpGain);
                 if (lpGains.Count() != 0)
                 {
-                    serverGain += summonerAverage.Where(x => x.IsLpGain).Average(x => x.Value); 
+                    serverGain += summonerAverage.Where(x => x.IsLpGain).Average(x => x.Value);
                     gainsAveraged++;
                 }
 
@@ -45,7 +44,8 @@
             var averageGain = Math.Round(increments.Where(x => x.IsLpGain).Average(x => x.Value));
             var averageLoss = Math.Round(increments.Where(x => !x.IsLpGain).Average(x => x.Value));
 
-            Console.WriteLine("Server average gain = " + serverAverageGain + " and average loss = " + serverAverageLoss);
+            Console.WriteLine("Server average gain = " + serverAverageGain + " and average loss = " +
+                              serverAverageLoss);
             Console.WriteLine("Your average gain = " + averageGain + " and average loss = " + averageLoss);
         }
 
@@ -54,7 +54,6 @@
             var summoner = summoners.First(x => x.Name.Equals(summonerName));
             var summonerLpLog = summoner.LpLog.Select(int.Parse).ToList();
             return LpIncrementCalculator(summonerLpLog);
-
         }
 
         private List<LpIncrement> LpIncrementCalculator(List<int> lpLog)
@@ -67,6 +66,7 @@
                     ? new LpIncrement(false, gainOrLoss)
                     : new LpIncrement(true, Math.Abs(gainOrLoss)));
             }
+
             return lpIncrementLog;
         }
     }

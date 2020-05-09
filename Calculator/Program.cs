@@ -1,6 +1,5 @@
 ﻿namespace Calculator
 {
-    using System;
     using System.Linq;
     using Calculator.Service;
 

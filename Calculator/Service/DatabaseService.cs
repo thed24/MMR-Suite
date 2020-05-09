@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Amazon.DynamoDBv2.DocumentModel;
     using Cacher.Database;
     using Cacher.Model;
     using static Cacher.Service.RiotDatabaseConnector;
