@@ -1,6 +1,7 @@
 ﻿namespace Calculator.Service
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using Cacher.Model;
@@ -11,15 +12,34 @@
         public void Calculate(string[] args, List<SummonerStats> summoners)
         {
             var summonerName = args[0];
+            var chosenSummoner = summoners.First(x => x.Name.Equals(summonerName));
+            var filteredSummoners = filterSummoners(summoners, chosenSummoner);
+
+            var (serverAverageGain, serverAverageLoss) = CalculateAverages(filteredSummoners);
+            var (playerAverageGain, playerAverageLoss) = CalculateAverages(new[] {chosenSummoner});
+
+            Console.WriteLine("Server average gain = " + serverAverageGain + " and average loss = " +
+                              serverAverageLoss);
+            Console.WriteLine("Your average gain = " + playerAverageGain + " and average loss = " + playerAverageLoss);
+        }
+
+        private IEnumerable<SummonerStats> filterSummoners(List<SummonerStats> summoners, SummonerStats chosenSummoner)
+        {
+            return summoners
+                .Where(x => x.LpLog.Count > 1)
+                .Where(x => x.Rank.Equals(chosenSummoner.Rank));
+        }
+
+        private (double gainAverage, double lossAverage) CalculateAverages(IEnumerable<SummonerStats> summoners)
+        {
             var gainsAveraged = 0;
             var lossesAveraged = 0;
             double serverGain = 0;
             double serverLoss = 0;
-            var filteredSummoners = summoners.Where(x => x.LpLog.Count > 1);
 
-            foreach (var summoner in filteredSummoners)
+            foreach (var summoner in summoners)
             {
-                var summonerAverage = CalculateIncrements(summoners, summoner.Name);
+                var summonerAverage = CalculateLpIncrements(summoners, summoner.Name);
 
                 var lpGains = summonerAverage.Where(x => x.IsLpGain);
                 if (lpGains.Count() != 0)
@@ -36,27 +56,21 @@
                 }
             }
 
-            var serverAverageGain = Math.Round(serverGain / gainsAveraged);
-            var serverAverageLoss = Math.Round(serverLoss / lossesAveraged);
+            var gainAverage = Math.Round(serverGain / gainsAveraged);
+            var lossAverage = Math.Round(serverLoss / lossesAveraged);
 
-            var increments = CalculateIncrements(summoners, summonerName);
-
-            var averageGain = Math.Round(increments.Where(x => x.IsLpGain).Average(x => x.Value));
-            var averageLoss = Math.Round(increments.Where(x => !x.IsLpGain).Average(x => x.Value));
-
-            Console.WriteLine("Server average gain = " + serverAverageGain + " and average loss = " +
-                              serverAverageLoss);
-            Console.WriteLine("Your average gain = " + averageGain + " and average loss = " + averageLoss);
+            return (gainAverage, lossAverage);
         }
 
-        private List<LpIncrement> CalculateIncrements(IEnumerable<SummonerStats> summoners, string summonerName)
+        private List<LpIncrement> CalculateLpIncrements(IEnumerable<SummonerStats> summoners, string summonerName)
         {
             var summoner = summoners.First(x => x.Name.Equals(summonerName));
             var summonerLpLog = summoner.LpLog.Select(int.Parse).ToList();
-            return LpIncrementCalculator(summonerLpLog);
+            var lpIncrements = CreateLpIncrements(summonerLpLog);
+            return lpIncrements.Where(x => x.Value != 75).ToList();
         }
 
-        private List<LpIncrement> LpIncrementCalculator(List<int> lpLog)
+        private List<LpIncrement> CreateLpIncrements(List<int> lpLog)
         {
             var lpIncrementLog = new List<LpIncrement>();
             for (var i = 0; i < lpLog.Count() - 1; i++)
