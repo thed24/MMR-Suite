@@ -19,6 +19,11 @@ The application uses several AWS resources, including Lambda functions, a Dynamo
 
 To run without building, simply CD into the Calculator directory located within the src subdirectory and run ```dotnet run {SUMMONER NAME}```. Please note, you will need to have built up a database that has this user within the database first. To do so, use the supplied template to generate the appropriate AWS stack, and supply the lambda with a Riot API key and a chosen summoner name. This Stack will run the lambda every 15 minutes in-order to maintain an accurate log of LP histories.
 
+### Sample Output:
+
+Server average gain = 21 and average loss = 18
+Your average gain = 17 and average loss = 18
+
 # Tests
 
 As this is just a side project I hacked together, I initially have forgone tests, which is a bad practice. Usually, I take a TDD approach to designing architecture and code. Tests will be added down the line.
