@@ -1,7 +1,6 @@
 ﻿namespace Calculator.Service
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using Cacher.Model;
@@ -13,7 +12,7 @@
         {
             var summonerName = args[0];
             var chosenSummoner = summoners.First(x => x.Name.Equals(summonerName));
-            var filteredSummoners = filterSummoners(summoners, chosenSummoner);
+            var filteredSummoners = FilterSummoners(summoners, chosenSummoner);
 
             var (serverAverageGain, serverAverageLoss) = CalculateAverages(filteredSummoners);
             var (playerAverageGain, playerAverageLoss) = CalculateAverages(new[] {chosenSummoner});
@@ -23,7 +22,8 @@
             Console.WriteLine("Your average gain = " + playerAverageGain + " and average loss = " + playerAverageLoss);
         }
 
-        private IEnumerable<SummonerStats> filterSummoners(List<SummonerStats> summoners, SummonerStats chosenSummoner)
+        private static IEnumerable<SummonerStats> FilterSummoners(IEnumerable<SummonerStats> summoners,
+            SummonerStats chosenSummoner)
         {
             return summoners
                 .Where(x => x.LpLog.Count > 1)
@@ -49,7 +49,7 @@
                 }
 
                 var lpLosses = summonerAverage.Where(x => !x.IsLpGain);
-                if (lpLosses.Count() != 0)
+                if (!lpLosses.Any()) continue;
                 {
                     serverLoss += summonerAverage.Where(x => !x.IsLpGain).Average(x => x.Value);
                     lossesAveraged++;
@@ -62,7 +62,8 @@
             return (gainAverage, lossAverage);
         }
 
-        private List<LpIncrement> CalculateLpIncrements(IEnumerable<SummonerStats> summoners, string summonerName)
+        private IEnumerable<LpIncrement> CalculateLpIncrements(IEnumerable<SummonerStats> summoners,
+            string summonerName)
         {
             var summoner = summoners.First(x => x.Name.Equals(summonerName));
             var summonerLpLog = summoner.LpLog.Select(int.Parse).ToList();
@@ -70,10 +71,10 @@
             return lpIncrements.Where(x => x.Value != 75).ToList();
         }
 
-        private List<LpIncrement> CreateLpIncrements(List<int> lpLog)
+        private IEnumerable<LpIncrement> CreateLpIncrements(IReadOnlyList<int> lpLog)
         {
             var lpIncrementLog = new List<LpIncrement>();
-            for (var i = 0; i < lpLog.Count() - 1; i++)
+            for (var i = 0; i < lpLog.Count - 1; i++)
             {
                 var gainOrLoss = lpLog[i] - lpLog[i + 1];
                 lpIncrementLog.Add(gainOrLoss > 0

@@ -7,14 +7,14 @@ namespace Cacher.Database
 
     public class DynamoDbRepository : IRepository<Document, Primitive>
     {
+        private const string TableName = "SummonerLpHistory";
         private static readonly RegionEndpoint Region = RegionEndpoint.GetBySystemName("ap-southeast-2");
         private readonly Table _table;
-        private readonly string _tableName = "SummonerLpHistory";
 
         public DynamoDbRepository()
         {
             var client = new AmazonDynamoDBClient(Region);
-            _table = Table.LoadTable(client, _tableName, DynamoDBEntryConversion.V2);
+            _table = Table.LoadTable(client, TableName, DynamoDBEntryConversion.V2);
         }
 
         public Document Get(Primitive summoner)

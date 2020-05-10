@@ -5,3 +5,4 @@ libs
 omnisharp.json
 obj
 bin
+*.csproj

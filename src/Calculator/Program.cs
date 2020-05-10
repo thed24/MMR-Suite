@@ -3,7 +3,7 @@
     using System.Linq;
     using Calculator.Service;
 
-    internal class Program
+    internal static class Program
     {
         private static readonly DatabaseService DatabaseService = new DatabaseService();
         private static readonly CalculatorService CalculatorService = new CalculatorService();

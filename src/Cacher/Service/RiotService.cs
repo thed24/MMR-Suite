@@ -10,8 +10,8 @@
 
     internal class RiotService
     {
+        private const Region Region = RiotSharp.Misc.Region.Oce;
         private readonly RiotApi _api;
-        private readonly Region _region = Region.Oce;
 
         public RiotService(RiotApi api)
         {
@@ -38,9 +38,9 @@
 
         internal IEnumerable<LeagueItem> GetSummonersInSummonerLeague(string summonerName)
         {
-            var summoner = _api.Summoner.GetSummonerByNameAsync(_region, summonerName).Result;
-            var summonerLeagues = _api.League.GetLeagueEntriesBySummonerAsync(_region, summoner.Id).Result;
-            return _api.League.GetLeagueByIdAsync(_region, summonerLeagues[0].LeagueId).Result.Entries;
+            var summoner = _api.Summoner.GetSummonerByNameAsync(Region, summonerName).Result;
+            var summonerLeagues = _api.League.GetLeagueEntriesBySummonerAsync(Region, summoner.Id).Result;
+            return _api.League.GetLeagueByIdAsync(Region, summonerLeagues[0].LeagueId).Result.Entries;
         }
     }
 }
