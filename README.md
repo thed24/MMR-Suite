@@ -21,8 +21,9 @@ To run without building, simply CD into the Calculator directory located within 
 
 ### Sample Output:
 
-Server average gain = 21 and average loss = 18
-Your average gain = 17 and average loss = 18
+Server avg gain = 21 and avg loss = 18
+
+Your avg gain = 17 and avg loss = 18
 
 # Tests
 
