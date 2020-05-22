@@ -23,7 +23,7 @@ namespace Cacher.Service
                     var summonersStats = _connector.CreateSummonerStats(entry.SummonerId, entry.SummonerName);
                     _database.Add(summonersStats);
                 }
-                catch (Exception e)
+                catch (Exception e) // Catches rate limit exceptions due to personal API keys being rate limited 
                 {
                     Console.WriteLine(e);
                 }
