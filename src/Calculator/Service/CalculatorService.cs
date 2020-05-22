@@ -8,18 +8,25 @@
 
     public class CalculatorService
     {
-        public void Calculate(string[] args, List<SummonerStats> summoners)
+        private DatabaseService _databaseService;
+
+        public CalculatorService(DatabaseService databaseService)
+        {
+            _databaseService = databaseService;
+        }
+
+        public void Calculate(string[] args)
         {
             var summonerName = args[0];
+            var summoners = _databaseService.GetAll();
             var chosenSummoner = summoners.First(x => x.Name.Equals(summonerName));
             var filteredSummoners = FilterSummoners(summoners, chosenSummoner);
 
             var (serverAverageGain, serverAverageLoss) = CalculateAverages(filteredSummoners);
             var (playerAverageGain, playerAverageLoss) = CalculateAverages(new[] {chosenSummoner});
 
-            Console.WriteLine("Server average gain = " + serverAverageGain + " and average loss = " +
-                              serverAverageLoss);
-            Console.WriteLine("Your average gain = " + playerAverageGain + " and average loss = " + playerAverageLoss);
+            Console.WriteLine("Server avg gain = " + serverAverageGain + " and avg loss = " + serverAverageLoss);
+            Console.WriteLine("Your avg gain = " + playerAverageGain + " and avg loss = " + playerAverageLoss);
         }
 
         private static IEnumerable<SummonerStats> FilterSummoners(IEnumerable<SummonerStats> summoners,
