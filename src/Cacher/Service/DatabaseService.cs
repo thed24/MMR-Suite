@@ -11,24 +11,25 @@
 
         internal void Add(SummonerStats summonerStats)
         {
-            var summoner = Get(summonerStats.Name);
+            var summoner = Get(summonerStats);
             if (summoner is null)
                 _repository.Add(DocumentWrapper(summonerStats));
             else
                 Update(summonerStats.LpLog.Last(), summoner);
         }
 
-        private SummonerStats Get(string summonerName)
+        private SummonerStats Get(SummonerStats summonerStats)
         {
-            var summonerFromDb = _repository.Get(summonerName);
+            var wrappedSummonerStats = DocumentWrapper(summonerStats);
+            var summonerFromDb = _repository.Get(wrappedSummonerStats);
             return summonerFromDb != null && summonerFromDb.Any() ? DocumentUnwrapper(summonerFromDb) : null;
         }
 
-        private void Update(string newLp, SummonerStats summoner)
+        private void Update(string newLp, SummonerStats summonerStats)
         {
-            if (summoner.LpLog.Last().Equals(newLp)) return;
-            summoner.LpLog.Add(newLp);
-            _repository.Update(DocumentWrapper(summoner));
+            if (summonerStats.LpLog.Last().Equals(newLp)) return;
+            summonerStats.LpLog.Add(newLp);
+            _repository.Update(DocumentWrapper(summonerStats));
         }
     }
 }

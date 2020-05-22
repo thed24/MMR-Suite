@@ -2,13 +2,9 @@ namespace Cacher.Database
 {
     using System.Collections.Generic;
 
-    internal interface IRepository<T, in TO>
+    internal interface IRepository<T>
     {
-        T Get(TO summonerId);
-
-        IEnumerable<T> GetAll();
-
-        void Delete(TO summonerId);
+        T Get(T summonerId);
 
         void Update(T summonerId);
 
