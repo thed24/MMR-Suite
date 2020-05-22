@@ -10,7 +10,7 @@ ProjectSection(SolutionItems) = preProject
 	template.yaml = template.yaml
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{F63E5E9C-DA49-4B31-8BCB-6420EF607711}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "src\Calculator\Calculator.csproj", "{F63E5E9C-DA49-4B31-8BCB-6420EF607711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
