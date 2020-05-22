@@ -6,6 +6,8 @@ namespace Cacher.Database
     {
         T Get(T summonerId);
 
+        IEnumerable<T> GetAll();
+
         void Update(T summonerId);
 
         void Add(T summonerId);

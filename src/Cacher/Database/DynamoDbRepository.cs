@@ -1,5 +1,6 @@
 namespace Cacher.Database
 {
+    using System.Collections.Generic;
     using Amazon;
     using Amazon.DynamoDBv2;
     using Amazon.DynamoDBv2.DocumentModel;
@@ -20,6 +21,13 @@ namespace Cacher.Database
         {
             return _table.GetItemAsync(summoner).Result;
         }
+        
+        public IEnumerable<Document> GetAll()
+        {
+            var conditions = new ScanFilter();
+            return _table.Scan(conditions).GetRemainingAsync().Result;
+        }
+
 
         public void Update(Document summoner)
         {
